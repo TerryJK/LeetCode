@@ -2,6 +2,18 @@
 // Q297. Serialize and Deserialize Binary Tree
 // Solution from: http://www.programcreek.com/2014/05/leetcode-serialize-and-deserialize-binary-tree-java/
 
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+ // Java Solution 2 - Preorder Traversal
+
 
 // Encodes a tree to a single string.
 public String serialize(TreeNode root) {
