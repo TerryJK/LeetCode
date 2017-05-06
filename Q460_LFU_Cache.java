@@ -1,60 +1,60 @@
-460. LFU Cache
-
-LFU: LEAST FREQUENTLY USED Cache
-
-Design and implement a data structure for Least Frequently Used (LFU) cache. It
-should support the following operations: get and put.
-
-- get(key) - Get the value (will always be positive) of the key if the key exists
-in the cache, otherwise return -1.
-
-- put(key, value) - Set or insert the value if the key is not already
-present. When the cache reaches its capacity, it should invalidate the
-least frequently used item before inserting a new item. For the purpose of
-this problem, when there is a tie (i.e., two or more keys that have the
-same frequency), the LEAST RECENTLY USED (LRU) key would be evicted.
-
-
-Follow up: Could you do both operations in O(1) time complexity?
-
-Example:
-
-LFUCache cache = new LFUCache( 2 /* capacity */ );
-
-cache.put(1, 1);
-cache.put(2, 2);
-cache.get(1);      // returns 1
-cache.put(3, 3);   // evicts key 2 (2 is lower frequency than 1)
-cache.get(2);      // returns -1 (not found)
-cache.get(3);      // returns 3.
-cache.put(4, 4);   // evicts key 1 (1, 3 are tie but 1 is least recently used)
-cache.get(1);      // returns -1 (not found)
-cache.get(3);      // returns 3
-cache.get(4);      // returns 4
-
-//////////////////////////////////////////////
-Coding Concept
-//////////////////////////////////////////////
-
-Java O(1) Accept Solution Using HashMap, DoubleLinkedList and LinkedHashSet
-
-Two HashMaps are used, one to store <key, value> pair, another store the <key,
-node>. I use double linked list to keep the frequent of each key. In each double
-linked list node, keys with the same count are saved using java built in
-LinkedHashSet. This can keep the order.
-
-
-Every time, one key is referenced, first find the current node corresponding to
-the key, If the following node exist and the frequent is larger by one, add key
-to the keys of the following node, else create a new node and add it following
-the current node. All operations are guaranteed to be O(1).
-
-
-
-
+// 460. LFU Cache
+//
+// LFU: LEAST FREQUENTLY USED Cache
+//
+// Design and implement a data structure for Least Frequently Used (LFU) cache. It
+// should support the following operations: get and put.
+//
+// - get(key) - Get the value (will always be positive) of the key if the key exists
+// in the cache, otherwise return -1.
+//
+// - put(key, value) - Set or insert the value if the key is not already
+// present. When the cache reaches its capacity, it should invalidate the
+// least frequently used item before inserting a new item. For the purpose of
+// this problem, when there is a tie (i.e., two or more keys that have the
+// same frequency), the LEAST RECENTLY USED (LRU) key would be evicted.
+//
+//
+// Follow up: Could you do both operations in O(1) time complexity?
+//
+// Example:
+//
+// LFUCache cache = new LFUCache( 2 /* capacity */ );
+//
+// cache.put(1, 1);
+// cache.put(2, 2);
+// cache.get(1);      // returns 1
+// cache.put(3, 3);   // evicts key 2 (2 is lower frequency than 1)
+// cache.get(2);      // returns -1 (not found)
+// cache.get(3);      // returns 3.
+// cache.put(4, 4);   // evicts key 1 (1, 3 are tie but 1 is least recently used)
+// cache.get(1);      // returns -1 (not found)
+// cache.get(3);      // returns 3
+// cache.get(4);      // returns 4
+//
 // //////////////////////////////////////////////
-    Coding Solution
+// Coding Concept
 // //////////////////////////////////////////////
+//
+// Java O(1) Accept Solution Using HashMap, DoubleLinkedList and LinkedHashSet
+//
+// Two HashMaps are used, one to store <key, value> pair, another store the <key,
+// node>. I use double linked list to keep the frequent of each key. In each double
+// linked list node, keys with the same count are saved using java built in
+// LinkedHashSet. This can keep the order.
+//
+//
+// Every time, one key is referenced, first find the current node corresponding to
+// the key, If the following node exist and the frequent is larger by one, add key
+// to the keys of the following node, else create a new node and add it following
+// the current node. All operations are guaranteed to be O(1).
+//
+//
+//
+//
+// // //////////////////////////////////////////////
+//     Coding Solution
+// // //////////////////////////////////////////////
 
 public class LFUCache {
     private Node head = null;
