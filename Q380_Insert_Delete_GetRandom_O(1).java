@@ -21,7 +21,7 @@ public class RandomizedSet {
     public boolean insert(int val) {
         boolean contain = locs.containsKey(val);
         if ( contain ) return false;
-        locs.put( val, nums.size());
+        locs.put(val, nums.size());
         nums.add(val);
         return true;
     }
