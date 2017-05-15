@@ -19,11 +19,14 @@ String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "p
 ans.add("");
 for(int i =0; i<digits.length();i++){
     int x = Character.getNumericValue(digits.charAt(i));
-    while(ans.peek().length()==i){
-        String t = ans.remove();
+    while(ans.peek().length()==i){// key point
+        String t = ans.remove();// key point
         for(char s : mapping[x].toCharArray())
-            ans.add(t+s);
+            ans.add(t+s);// key point
     }
 }
 return ans;
 }
+
+// LinkedLinst -> peek()
+// Retrieves, but does not remove, the head (first element) of this list.
