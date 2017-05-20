@@ -69,8 +69,8 @@ public int ladderLength(String beginWord, String endWord, Set<String> wordList) 
 						visited.add(target);
 					}
 					chs[i] = old;
-				}
-			}
+				} //for (char c = 'a'; c <= 'z'; c++) {
+			} //for (int i = 0; i < chs.length; i++) {
 		}
 
 		beginSet = temp;

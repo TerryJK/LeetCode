@@ -39,7 +39,7 @@ public int myAtoi(String str) {
 
         //check if total will be overflow after 10 times and add digit
         if(Integer.MAX_VALUE/10 < total || Integer.MAX_VALUE/10 == total && Integer.MAX_VALUE %10 < digit)
-            return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+          return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
 
         total = 10 * total + digit;
         index ++;
