@@ -14,6 +14,7 @@ public class M155_Min_Stack {
   public void push(Integer x) {
     stack.push(x - min);
     if(x < min) min = x;
+
   }
 
   public void pop() {
@@ -44,3 +45,15 @@ public class M155_Min_Stack {
 
   }
 }
+
+
+
+Input:
+["MinStack","push","push","push","push","getMin","pop","getMin","pop","getMin","pop","getMin"]
+[[],[2],[0],[3],[0],[],[],[],[],[],[],[]]
+
+Output:
+[null,null,null,null,null,0,null,0,null,0,null,0]
+
+Expected:
+[null,null,null,null,null,0,null,0,null,0,null,2]
